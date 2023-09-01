@@ -625,7 +625,7 @@ MonoBehaviour:
   size: {x: 10, y: 10}
   startPos: 0
   room: {fileID: 7622724426255406903, guid: c05ab13fff489b74a923d9d294bb3c2b, type: 3}
-  offset: {x: 15, y: 15}
+  offset: {x: 19, y: 19}
 --- !u!4 &880789852
 Transform:
   m_ObjectHideFlags: 0
@@ -990,7 +990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cfuStatus: PSXEffects v1.18.4 - version ahead?!
   sections: 01010101
-  customRes: {x: 320, y: 240}
+  customRes: {x: 275, y: 128}
   resolutionFactor: 4
   limitFramerate: 60
   skipFrames: 0
@@ -998,7 +998,7 @@ MonoBehaviour:
   clampAffine: 0
   affineBounds: 0
   polygonalDrawDistance: 30
-  vertexInaccuracy: 80
+  vertexInaccuracy: 100
   polygonInaccuracy: 0
   colorDepth: 5
   scanlines: 1
@@ -1014,11 +1014,11 @@ MonoBehaviour:
   postProcessing: 1
   verticalScanlines: 1
   shadowIntensity: 0.5
-  downscale: 1
+  downscale: 0
   snapCamera: 0
   camInaccuracy: 0.05
   camSnapping: 0
-  shadowType: 0
+  shadowType: 1
   ditherSky: 1
   ditherType: 1
 --- !u!1 &1008524885
