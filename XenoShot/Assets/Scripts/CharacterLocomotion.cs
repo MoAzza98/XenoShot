@@ -7,12 +7,17 @@ public class CharacterLocomotion : MonoBehaviour
 {
     Animator animator;
     Vector2 input;
-    public CinemachineFreeLook vCamFree;
+    private CinemachineFreeLook vCamFree;
+    public Transform lookAt;
+    public Transform follow;
 
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();  
+        animator = GetComponent<Animator>();
+        vCamFree = FindAnyObjectByType<CinemachineFreeLook>();
+        vCamFree.m_LookAt = lookAt;
+        vCamFree.m_Follow = follow;
     }
 
     // Update is called once per frame

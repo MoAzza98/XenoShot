@@ -22,7 +22,7 @@ public class RaycastWeapon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        raycastDestination = GameObject.Find("CrossHairTarget").transform;
     }
 
     // Update is called once per frame
