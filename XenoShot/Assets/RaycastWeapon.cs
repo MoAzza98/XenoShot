@@ -7,7 +7,9 @@ public class RaycastWeapon : MonoBehaviour
 
     public bool isFiring = false;
     public ParticleSystem muzzleFlash;
+    public ParticleSystem hitEffect;
     public Transform raycastOrigin;
+    public Transform raycastDestination;
 
     Ray ray;
     RaycastHit hitInfo;
@@ -21,8 +23,8 @@ public class RaycastWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 testRay = raycastOrigin.TransformDirection(Vector3.down) * 20;
-        Debug.DrawRay(raycastOrigin.position, testRay, Color.green);
+        //Vector3 testRay = raycastOrigin.TransformDirection(Vector3.down) * 20;
+        //Debug.DrawRay(raycastOrigin.position, testRay, Color.green);
     }
 
     public void StartFiring()
@@ -32,10 +34,14 @@ public class RaycastWeapon : MonoBehaviour
 
         //fix this lmao
         ray.origin = raycastOrigin.position;
-        ray.direction = raycastOrigin.TransformDirection(Vector3.down);
+        ray.direction = raycastDestination.position - raycastOrigin.position;
         if(Physics.Raycast(ray, out hitInfo))
         {
-            Debug.DrawRay(ray.origin, hitInfo.point, Color.red, 10.0f);
+            Debug.DrawLine(ray.origin, hitInfo.point, Color.red, 1.0f);
+
+            hitEffect.transform.position = hitInfo.point;
+            hitEffect.transform.forward = hitInfo.normal;
+            hitEffect.Emit(1);
         }
     }
 
