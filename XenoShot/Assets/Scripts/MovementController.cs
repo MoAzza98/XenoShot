@@ -63,8 +63,6 @@ public class MovementController : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        Debug.Log(readyToJump + " " + isGrounded);
-
         if (Input.GetKeyDown(jumpKey) && readyToJump && isGrounded)
         {
             Debug.Log("Should jump");

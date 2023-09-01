@@ -10,6 +10,11 @@ public class RaycastWeapon : MonoBehaviour
     public ParticleSystem hitEffect;
     public Transform raycastOrigin;
     public Transform raycastDestination;
+    public TrailRenderer tracerEffect;
+
+    public bool isAuto;
+    public int fireRate = 25;
+    float accumulatedTime;
 
     Ray ray;
     RaycastHit hitInfo;
@@ -30,18 +35,42 @@ public class RaycastWeapon : MonoBehaviour
     public void StartFiring()
     {
         isFiring = true;
+        accumulatedTime = 0f;
+        FireBullet();
+    }
+
+    public void UpdateFiring(float deltaTime)
+    {
+        accumulatedTime += deltaTime;
+        float fireInterval = 1.0f / fireRate;
+        while(accumulatedTime > 0.0f)
+        {
+            FireBullet();
+            accumulatedTime -= fireInterval;
+        }
+    }
+
+    private void FireBullet()
+    {
         muzzleFlash.Emit(1);
 
         //fix this lmao
         ray.origin = raycastOrigin.position;
         ray.direction = raycastDestination.position - raycastOrigin.position;
-        if(Physics.Raycast(ray, out hitInfo))
+
+        var tracer = Instantiate(tracerEffect, ray.origin, Quaternion.identity);
+        tracerEffect.AddPosition(ray.origin);
+
+        if (Physics.Raycast(ray, out hitInfo))
         {
-            Debug.DrawLine(ray.origin, hitInfo.point, Color.red, 1.0f);
+            //Debug.DrawLine(ray.origin, hitInfo.point, Color.red, 1.0f);
 
             hitEffect.transform.position = hitInfo.point;
             hitEffect.transform.forward = hitInfo.normal;
             hitEffect.Emit(1);
+
+            tracer.transform.position = hitInfo.point;
+            Debug.Log("Spawned tracer... I think: " + tracer.transform.position);
         }
     }
 

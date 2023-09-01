@@ -30,10 +30,17 @@ public class CharacterAiming : MonoBehaviour
 
     private void LateUpdate()
     {
+        
+
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
             weapon.StartFiring();
-        } else if (Input.GetKeyUp(KeyCode.Mouse0))
+        }
+        if (weapon.isFiring)
+        {
+            weapon.UpdateFiring(Time.deltaTime);
+        }
+        if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             weapon.StopFiring();
         }
