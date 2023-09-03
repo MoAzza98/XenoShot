@@ -18,14 +18,14 @@ public class CharacterAiming : MonoBehaviour
 
     private void Update()
     {
-        
+        float yawCamera = mainCamera.transform.rotation.eulerAngles.y;
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, yawCamera, 0), turnSpeed * Time.deltaTime);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        float yawCamera = mainCamera.transform.rotation.eulerAngles.y;
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, yawCamera, 0), turnSpeed * Time.deltaTime);
+
     }
 
     private void LateUpdate()

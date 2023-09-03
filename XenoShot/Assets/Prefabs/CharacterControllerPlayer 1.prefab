@@ -1538,7 +1538,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682931999859453023}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea46f5e108ff8ab4dba43a8a53c75f17, type: 3}
   m_Name: 
@@ -1567,7 +1567,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f83667a7fc3134fbea55ebb3985079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vCamFreeGO: {fileID: 0}
+  vCamVirtGO: {fileID: 0}
   lookAt: {fileID: 682931999665430334}
+  fpsFollow: {fileID: 2911441428466561532}
   follow: {fileID: 682931999859197605}
 --- !u!114 &682931999859452999
 MonoBehaviour:
@@ -1617,8 +1620,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7123ab7d937b130479e0a7cd20b97e90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  jump: 10
+  moveSpeed: 8
+  jump: 8
   Gravity: -9.8
 --- !u!1 &682931999859454551
 GameObject:
