@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		cc.Move((transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")).normalized * moveSpeed * Time.deltaTime);
+		cc.Move((transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal")).normalized * moveSpeed * Time.deltaTime);
 		if (!cc.isGrounded) {
 			cc.Move(Vector3.up * Time.deltaTime * Physics.gravity.y);
 		}

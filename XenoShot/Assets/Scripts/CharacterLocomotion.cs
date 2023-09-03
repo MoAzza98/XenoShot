@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class CharacterLocomotion : MonoBehaviour
 {
-    Animator animator;
-    Vector2 input;
+    private Animator animator;
+    private Vector2 input;
     private CinemachineFreeLook vCamFree;
     public Transform lookAt;
     public Transform follow;
