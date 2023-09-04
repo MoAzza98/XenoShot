@@ -70,7 +70,7 @@ public class RaycastWeapon : MonoBehaviour
             hitEffect.Emit(1);
 
             tracer.transform.position = hitInfo.point;
-            Debug.Log("Spawned tracer... I think: " + tracer.transform.position);
+            //Debug.Log("Spawned tracer... I think: " + tracer.transform.position);
         }
     }
 

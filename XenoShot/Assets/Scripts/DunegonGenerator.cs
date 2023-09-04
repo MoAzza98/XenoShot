@@ -18,6 +18,7 @@ public class DunegonGenerator : MonoBehaviour
     public int startPos = 0;
     public GameObject room;
     public Vector2 offset;
+    RoomPopulator populator;
 
     List<Cell> board;
 
@@ -47,6 +48,7 @@ public class DunegonGenerator : MonoBehaviour
                     newRoom.UpdateRoom(currentCell.status);
 
                     newRoom.name += " " + i + " " + j;
+                    
                 }
             }
         }
