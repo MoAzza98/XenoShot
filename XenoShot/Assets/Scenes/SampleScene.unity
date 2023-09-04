@@ -728,7 +728,7 @@ MonoBehaviour:
   size: {x: 10, y: 10}
   startPos: 0
   room: {fileID: 7622724426255406903, guid: c05ab13fff489b74a923d9d294bb3c2b, type: 3}
-  offset: {x: 19, y: 19}
+  offset: {x: 23, y: 23}
 --- !u!4 &880789852
 Transform:
   m_ObjectHideFlags: 0
@@ -763,7 +763,7 @@ MonoBehaviour:
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_UseGeometry: 0
+  m_UseGeometry: 1
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
