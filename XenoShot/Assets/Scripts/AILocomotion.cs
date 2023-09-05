@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class AILocomotion : MonoBehaviour
 {
     private Transform playerTransform;
+    public float characterHeight;
     NavMeshAgent agent;
     Animator animator;
 
@@ -17,7 +18,7 @@ public class AILocomotion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerTransform = GameObject.Find("Player(Clone)").transform;
+        playerTransform = GameObject.Find("Player").transform;
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         agent.destination = playerTransform.position;

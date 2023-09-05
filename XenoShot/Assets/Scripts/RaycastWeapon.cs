@@ -14,6 +14,7 @@ public class RaycastWeapon : MonoBehaviour
 
     public bool isAuto;
     public int fireRate = 25;
+    public float damage = 10;
     float accumulatedTime;
 
     Ray ray;
@@ -71,6 +72,18 @@ public class RaycastWeapon : MonoBehaviour
 
             tracer.transform.position = hitInfo.point;
             //Debug.Log("Spawned tracer... I think: " + tracer.transform.position);
+
+            var rb2d = hitInfo.collider.GetComponent<Rigidbody>();
+            if (rb2d)
+            {
+                rb2d.AddForceAtPosition(ray.direction * 20, hitInfo.point, ForceMode.Impulse);
+            }
+
+            var hitbox = hitInfo.collider.GetComponent<Hitbox>();
+            if (hitbox)
+            {
+                hitbox.OnRaycastHit(this, ray.direction);
+            }
         }
     }
 
