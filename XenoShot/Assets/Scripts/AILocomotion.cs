@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class AILocomotion : MonoBehaviour
 {
     private Transform playerTransform;
+    public float characterHeight;
     NavMeshAgent agent;
     Animator animator;
 

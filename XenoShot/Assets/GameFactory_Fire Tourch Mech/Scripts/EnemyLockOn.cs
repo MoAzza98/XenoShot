@@ -69,7 +69,7 @@ public class EnemyLockOn : MonoBehaviour
         enemyLocked = true;
     }
 
-    void ResetTarget()
+    public void ResetTarget()
     {
         lockOnCanvas.gameObject.SetActive(false);
         currentTarget = null;
@@ -100,8 +100,11 @@ public class EnemyLockOn : MonoBehaviour
         }
 
         if (!closestTarget ) return null;
-        float h1 = closestTarget.GetComponent<CapsuleCollider>().height;
-        float h2 = closestTarget.localScale.y;
+        //need to find a way to make this collider not interfere with gun collisions
+        float h1 = closestTarget.transform.root.GetComponent<AILocomotion>().characterHeight;
+        Debug.Log(h1);
+        float h2 = closestTarget.root.localScale.y;
+        Debug.Log("h1 is:" + h1 + " h2 is:" + h2);
         float h = h1 * h2;
         float half_h = (h / 2) / 2;
         currentYOffset = h - half_h;
@@ -131,7 +134,7 @@ public class EnemyLockOn : MonoBehaviour
             ResetTarget();
             return;
         }
-        pos = currentTarget.position + new Vector3(0, currentYOffset, 0);
+        pos = currentTarget.transform.root.position + new Vector3(0, currentYOffset, 0);
         lockOnCanvas.position = pos;
         lockOnCanvas.localScale = Vector3.one * ((cam.position - pos).magnitude * crossHair_Scale);
 
