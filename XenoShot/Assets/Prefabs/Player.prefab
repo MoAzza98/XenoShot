@@ -1460,6 +1460,7 @@ GameObject:
   - component: {fileID: 682931999859452999}
   - component: {fileID: 682931999859452998}
   - component: {fileID: 682931999866707402}
+  - component: {fileID: 604963372}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1474,7 +1475,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682931999859453023}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1586,6 +1587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnSpeed: 15
   gunPos: {fileID: 682931999859156795}
+  lockMovement: 0
 --- !u!114 &682931999859452998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1623,6 +1625,30 @@ MonoBehaviour:
   moveSpeed: 8
   jump: 8
   Gravity: -9.8
+--- !u!114 &604963372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682931999859453023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3f6dc76b3fc4af4c90a21b48e969f25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  enemyTarget_Locator: {fileID: 0}
+  cinemachineAnimator: {fileID: 0}
+  zeroVert_Look: 0
+  noticeZone: 10
+  lookAtSmoothing: 2
+  maxNoticeAngle: 60
+  crossHair_Scale: 0.1
+  camFollow: {fileID: 0}
+  lockOnCanvas: {fileID: 0}
 --- !u!1 &682931999859454551
 GameObject:
   m_ObjectHideFlags: 0

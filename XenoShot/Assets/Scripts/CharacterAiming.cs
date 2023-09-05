@@ -9,6 +9,8 @@ public class CharacterAiming : MonoBehaviour
     public Transform gunPos;
     RaycastWeapon weapon;
 
+    public bool lockMovement;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,14 @@ public class CharacterAiming : MonoBehaviour
     }
 
     private void Update()
+    {
+        if (!lockMovement)
+        {
+            CharacterRotation();
+        }
+    }
+
+    private void CharacterRotation()
     {
         float yawCamera = mainCamera.transform.rotation.eulerAngles.y;
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, yawCamera, 0), turnSpeed * Time.deltaTime);
@@ -45,4 +55,6 @@ public class CharacterAiming : MonoBehaviour
             weapon.StopFiring();
         }
     }
+
+
 }
