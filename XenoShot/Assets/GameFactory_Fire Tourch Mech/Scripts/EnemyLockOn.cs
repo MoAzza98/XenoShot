@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyLockOn : MonoBehaviour
 {
-    Transform currentTarget;
+    [HideInInspector] public Transform currentTarget;
     Animator anim;
 
     [SerializeField] LayerMask targetLayers;
@@ -22,7 +22,7 @@ public class EnemyLockOn : MonoBehaviour
 
     
     Transform cam;
-    bool enemyLocked;
+    [HideInInspector] public bool enemyLocked;
     float currentYOffset;
     Vector3 pos;
 

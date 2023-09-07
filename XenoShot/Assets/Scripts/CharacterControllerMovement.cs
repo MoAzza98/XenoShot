@@ -7,6 +7,9 @@ using UnityEngine.InputSystem;
 public class CharacterControllerMovement : MonoBehaviour
 {
     public float moveSpeed = 10f;
+    public float dashSpeed = 50f;
+    public float dashTime = 0.5f;
+    private float currentDashTimer = 0.5f;
     private Vector3 velocity;
     [SerializeField] private float jump = 10f;
     public float Gravity = -9.8f;
@@ -24,7 +27,15 @@ public class CharacterControllerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        cc.Move((transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")).normalized * moveSpeed * Time.deltaTime);
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            StartCoroutine(DashCoroutine());
+        }
+        else
+        {
+            cc.Move((transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")).normalized * moveSpeed * Time.deltaTime);
+        }
+
         if (!cc.isGrounded)
         {
             cc.Move(Vector3.up * Time.deltaTime * Physics.gravity.y);
@@ -43,6 +54,17 @@ public class CharacterControllerMovement : MonoBehaviour
 
     }
     
+    private IEnumerator DashCoroutine()
+    {
+        float startTime = Time.time;
+        while (Time.time < startTime + dashTime)
+        {
+            cc.Move((transform.forward * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal")).normalized * dashSpeed * Time.deltaTime);
+            currentDashTimer -= Time.deltaTime;
+
+            yield return null;
+        }
+    }
 
 
     private bool isGrounded()
