@@ -13,6 +13,7 @@ public class Health : MonoBehaviour
     NavMeshAgent agent;
     UIHealthbar healthBar;
     EnemyLockOn enemyLockOn;
+    AILocomotion aiLocomotion;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,8 @@ public class Health : MonoBehaviour
         ragdoll = GetComponent<Ragdoll>();
         agent = GetComponent<NavMeshAgent>();
         healthBar = GetComponentInChildren<UIHealthbar>();
-        enemyLockOn = GameObject.FindAnyObjectByType<EnemyLockOn>();
+        enemyLockOn = FindAnyObjectByType<EnemyLockOn>();
+        aiLocomotion = GetComponent<AILocomotion>();
 
         var rigidBodies = GetComponentsInChildren<Rigidbody>();
         foreach ( var rigidBody in rigidBodies)
@@ -50,6 +52,7 @@ public class Health : MonoBehaviour
 
     private void Die(Vector3 force)
     {
+        aiLocomotion.enabled = false;
         enemyLockOn.ResetTarget();
         healthBar.gameObject.SetActive(false);
         ragdoll.ActivateRagdoll();

@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class CharacterAiming : MonoBehaviour
 {
     public float turnSpeed = 15f;
+    public float aimDuration = 1.8f;
+
     Camera mainCamera;
     public Transform gunPos;
-    RaycastWeapon weapon;
+    public Rig aimLayer;
 
     public bool lockMovement;
 
@@ -15,11 +18,22 @@ public class CharacterAiming : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
-        weapon = GetComponentInChildren<RaycastWeapon>();
     }
 
     private void Update()
     {
+        /*
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            aimLayer.weight += Time.deltaTime / aimDuration;
+        }
+        else
+        {
+            aimLayer.weight -= Time.deltaTime / aimDuration;
+        }*/
+
+        aimLayer.weight = 1.0f;
+
         if (!lockMovement)
         {
             CharacterRotation();
@@ -35,25 +49,15 @@ public class CharacterAiming : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
+        if (!lockMovement)
+        {
+            CharacterRotation();
+        }
     }
 
     private void LateUpdate()
     {
         
-
-        if(Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            weapon.StartFiring();
-        }
-        if (weapon.isFiring)
-        {
-            weapon.UpdateFiring(Time.deltaTime);
-        }
-        if (Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            weapon.StopFiring();
-        }
     }
 
 

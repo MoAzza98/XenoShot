@@ -10,9 +10,11 @@ public class CharacterControllerMovement : MonoBehaviour
     public float dashSpeed = 50f;
     public float dashTime = 0.5f;
     private float currentDashTimer = 0.5f;
-    private Vector3 velocity;
+    private float velocity;
+    private Vector3 direction;
     [SerializeField] private float jump = 10f;
     public float Gravity = -9.8f;
+    public float gravityMultiplier;
 
     private CharacterController cc;
 
@@ -25,8 +27,10 @@ public class CharacterControllerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
+        ApplyGravity();
+
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
             StartCoroutine(DashCoroutine());
@@ -41,16 +45,11 @@ public class CharacterControllerMovement : MonoBehaviour
             cc.Move(Vector3.up * Time.deltaTime * Physics.gravity.y);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && transform.position.y < -0.51f)
+        if (Input.GetKeyDown(KeyCode.Space))
         // (-0.5) change this value according to your character y position + 1
         {
-            velocity.y = jump;
+            Jump();
         }
-        else
-        {
-            velocity.y += Gravity * Time.deltaTime;
-        }
-        cc.Move(velocity * Time.deltaTime);
 
     }
     
@@ -66,9 +65,31 @@ public class CharacterControllerMovement : MonoBehaviour
         }
     }
 
+    private void ApplyGravity()
+    {
+        if (IsGrounded() && velocity < 0.0f)
+        {
+            velocity = -1.0f;
+        }
+        else
+        {
+            velocity += Gravity * gravityMultiplier * Time.deltaTime;
+        }
+
+        direction.y = velocity;
+    }
+
+    public void Jump()
+    {
+        if (!IsGrounded()) return;
+        velocity += jump;
+    }
+
 
     private bool isGrounded()
     {
         return cc.isGrounded;
     }
+
+    private bool IsGrounded() => cc.isGrounded;
 }
