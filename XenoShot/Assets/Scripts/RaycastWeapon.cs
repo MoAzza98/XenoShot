@@ -11,6 +11,8 @@ public class RaycastWeapon : MonoBehaviour
     public Transform raycastOrigin;
     public Transform raycastDestination;
     public TrailRenderer tracerEffect;
+    public AnimationClip weaponAnimation;
+    public GunType gunType;
 
     public bool isAuto;
     public int fireRate = 25;
@@ -92,4 +94,11 @@ public class RaycastWeapon : MonoBehaviour
         isFiring= false;
     }
 
+}
+
+public enum GunType
+{
+    OneHanded,
+    TwoHanded,
+    Special
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyLockOn : MonoBehaviour
 {
-    Transform currentTarget;
+    [HideInInspector] public Transform currentTarget;
     Animator anim;
 
     [SerializeField] LayerMask targetLayers;
@@ -22,7 +22,7 @@ public class EnemyLockOn : MonoBehaviour
 
     
     Transform cam;
-    bool enemyLocked;
+    [HideInInspector] public bool enemyLocked;
     float currentYOffset;
     Vector3 pos;
 
@@ -42,7 +42,7 @@ public class EnemyLockOn : MonoBehaviour
     {
         camFollow.lockedTarget = enemyLocked;
         charAiming.lockMovement = enemyLocked;
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (currentTarget)
             {
@@ -134,7 +134,7 @@ public class EnemyLockOn : MonoBehaviour
             ResetTarget();
             return;
         }
-        pos = currentTarget.transform.root.position + new Vector3(0, currentYOffset, 0);
+        pos = currentTarget.position + new Vector3(0, 0, 0);
         lockOnCanvas.position = pos;
         lockOnCanvas.localScale = Vector3.one * ((cam.position - pos).magnitude * crossHair_Scale);
 
