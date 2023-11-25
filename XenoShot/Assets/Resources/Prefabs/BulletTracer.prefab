@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6841141632620227336}
   - component: {fileID: 6808684926648176773}
+  - component: {fileID: 7222984045818486110}
   m_Layer: 0
   m_Name: BulletTracer
   m_TagString: Untagged
@@ -131,3 +132,15 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 1
   m_Emitting: 1
+--- !u!114 &7222984045818486110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8404150498257348002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0072e1c79ae7f58419a1f920329600bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
