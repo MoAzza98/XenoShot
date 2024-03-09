@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RaycastWeapon : MonoBehaviour
 {
+    public static RaycastWeapon instance;
 
     public bool isFiring = false;
     public ParticleSystem muzzleFlash;
@@ -25,6 +26,7 @@ public class RaycastWeapon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         raycastDestination = GameObject.Find("CrossHairTarget").transform;
     }
 

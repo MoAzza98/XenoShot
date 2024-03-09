@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class CharacterControllerMovement : MonoBehaviour
 {
     public float moveSpeed = 10f;
+    private float originalMoveSpeed;
     public float dashSpeed = 50f;
     public float dashTime = 0.5f;
     private float currentDashTimer = 0.5f;
@@ -19,11 +20,28 @@ public class CharacterControllerMovement : MonoBehaviour
     private CharacterController cc;
 
     // Use this for initialization
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Fast"))
+        {
+            StartCoroutine(ActivatePowerUp(other.gameObject));
+        }
+        else if (other.CompareTag("Damage"))
+        {
+            RaycastWeapon.instance.damage += RaycastWeapon.instance.damage;
+        } 
+        else if (other.CompareTag("fasterfire"))
+        {
+            RaycastWeapon.instance.fireRate += RaycastWeapon.instance.fireRate;
+        }
+    }
     void Start()
     {
         cc = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        originalMoveSpeed = moveSpeed;
     }
 
     // Update is called once per frame
@@ -92,4 +110,22 @@ public class CharacterControllerMovement : MonoBehaviour
     }
 
     private bool IsGrounded() => cc.isGrounded;
+
+
+    IEnumerator ActivatePowerUp(GameObject powerUp)
+    {
+        // Increase move speed
+        moveSpeed *= 2f;
+
+        // Wait for some time to let the power-up effect expire
+        yield return new WaitForSeconds(10f);
+
+        // Reset move speed to its original value
+        moveSpeed = originalMoveSpeed;
+
+        // Disable the power-up object
+        powerUp.SetActive(false);
+    }
+
+    
 }

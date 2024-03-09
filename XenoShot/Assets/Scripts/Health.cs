@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class Health : MonoBehaviour
 {
+    public static Health Instance;
     [HideInInspector]
     public float currentHealth;
     public float maxHealth;
@@ -14,10 +15,20 @@ public class Health : MonoBehaviour
     UIHealthbar healthBar;
     EnemyLockOn enemyLockOn;
     AILocomotion aiLocomotion;
+    public int scoreValue = 10; // Score value when an enemy is killed
+    public bool isBoss; // Flag to identify if this entity is a boss
+    private SpawnEnemy spawnEnemy; // Reference to the SpawnEnemy script
+    public GameObject winPanel; // Reference to the win panel
+    
 
     // Start is called before the first frame update
     void Start()
     {
+
+        currentHealth = maxHealth;
+
+        // Find and store reference to the SpawnEnemy script
+        spawnEnemy = FindObjectOfType<SpawnEnemy>();
         currentHealth = maxHealth;
         ragdoll = GetComponent<Ragdoll>();
         agent = GetComponent<NavMeshAgent>();
@@ -52,6 +63,14 @@ public class Health : MonoBehaviour
 
     private void Die(Vector3 force)
     {
+        if (isBoss)
+        {
+            SpawnEnemy.Instance.Win();
+        }
+        // Increase the score when an enemy dies
+        ScoreManager.instance.AddEnemyKillScore(); // Call AddEnemyKillScore() method from ScoreManager
+
+        // Perform other death-related actions (e.g., play death animation, destroy GameObject)
         aiLocomotion.enabled = false;
         enemyLockOn.ResetTarget();
         healthBar.gameObject.SetActive(false);
@@ -59,6 +78,9 @@ public class Health : MonoBehaviour
         force.y = 1;
         ragdoll.ApplyForce(force * dieForce);
         agent.enabled = false;
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, 1f);
+        SpawnEnemy.Instance.bossSpawned = false;
+        
     }
+
 }

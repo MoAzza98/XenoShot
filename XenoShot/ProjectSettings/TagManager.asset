@@ -6,6 +6,11 @@ TagManager:
   tags:
   - DemoRoom
   - Enemy
+  - Bullet
+  - Fast
+  - Damage
+  - fasterfire
+  - Boss
   layers:
   - Default
   - TransparentFX
