@@ -10,7 +10,7 @@ public class CharacterAiming : MonoBehaviour
 
     Camera mainCamera;
     public Transform gunPos;
-    public Rig aimLayer;
+  private Rig aimLayer;
 
     public bool lockMovement;
 
@@ -31,8 +31,11 @@ public class CharacterAiming : MonoBehaviour
         {
             aimLayer.weight -= Time.deltaTime / aimDuration;
         }*/
-
-        aimLayer.weight = 1.0f;
+        if(aimLayer != null)
+        {
+            aimLayer.weight = 1.0f;
+        }
+        
 
         if (!lockMovement)
         {

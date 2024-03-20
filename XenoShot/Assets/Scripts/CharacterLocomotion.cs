@@ -9,7 +9,7 @@ public class CharacterLocomotion : MonoBehaviour
     private Animator animator;
     private Vector2 input;
     private CinemachineFreeLook vCamFree;
-    public GameObject vCamFreeGO;
+    private GameObject vCamFreeGO;
     private CinemachineVirtualCamera vCamVirt;
     public GameObject vCamVirtGO;
     public Transform lookAt;

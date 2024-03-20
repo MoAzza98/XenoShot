@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class EnemyCounter : MonoBehaviour
 {
-    public Text enemyCountText; // Reference to the UI Text component to display enemy count
+    //public Text enemyCountText; // Reference to the UI Text component to display enemy count
     private int totalEnemiesSpawned; // Counter to keep track of total enemies spawned
     private int enemiesDestroyed; // Counter to keep track of enemies destroyed
 
@@ -31,6 +31,6 @@ public class EnemyCounter : MonoBehaviour
     void UpdateEnemyCountText()
     {
         // Update the UI Text to display the current enemy count
-        enemyCountText.text = "Enemies: " + (totalEnemiesSpawned - enemiesDestroyed).ToString();
+        //enemyCountText.text = "Enemies: " + (totalEnemiesSpawned - enemiesDestroyed).ToString();
     }
 }

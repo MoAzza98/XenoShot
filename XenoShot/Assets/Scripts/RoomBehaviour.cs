@@ -8,6 +8,8 @@ public class RoomBehaviour : MonoBehaviour
     public GameObject[] walls; // 0 - Up, 1 - Down, 2 - Right, 3 - Left
     public GameObject[] doors; // 0 - Up, 1 - Down, 2 - Right, 3 - Left
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,4 +30,8 @@ public class RoomBehaviour : MonoBehaviour
         }
     }
 
+
+    
+
+    
 }

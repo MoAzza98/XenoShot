@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 
 public class Health : MonoBehaviour
@@ -18,7 +19,7 @@ public class Health : MonoBehaviour
     public int scoreValue = 10; // Score value when an enemy is killed
     public bool isBoss; // Flag to identify if this entity is a boss
     private SpawnEnemy spawnEnemy; // Reference to the SpawnEnemy script
-    public GameObject winPanel; // Reference to the win panel
+    //public GameObject winPanel; // Reference to the win panel
     
 
     // Start is called before the first frame update
@@ -63,10 +64,6 @@ public class Health : MonoBehaviour
 
     private void Die(Vector3 force)
     {
-        if (isBoss)
-        {
-            SpawnEnemy.Instance.Win();
-        }
         // Increase the score when an enemy dies
         ScoreManager.instance.AddEnemyKillScore(); // Call AddEnemyKillScore() method from ScoreManager
 
@@ -78,9 +75,18 @@ public class Health : MonoBehaviour
         force.y = 1;
         ragdoll.ApplyForce(force * dieForce);
         agent.enabled = false;
-        Destroy(gameObject, 1f);
-        SpawnEnemy.Instance.bossSpawned = false;
+        Destroy(gameObject, 2f);
         
+
+        // Check if this entity is a boss and if its health has reached zero
+        if (isBoss && currentHealth <= 0)
+        {
+            Time.timeScale = 0;
+
+            SceneManager.LoadScene("WinPanel");
+            
+        }
     }
+
 
 }

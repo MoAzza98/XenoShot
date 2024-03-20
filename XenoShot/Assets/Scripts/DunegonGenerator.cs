@@ -11,7 +11,7 @@ public class DunegonGenerator : MonoBehaviour
         public bool[] status = new bool[4];
     }
 
-    public NavMeshSurface surface;
+    private NavMeshSurface surface;
 
     public Cell[] cells;
     public Vector2 size;
@@ -32,14 +32,14 @@ public class DunegonGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void GenerateDungeon()
     {
-        for(int i = 0; i < size.x; i++)
+        for (int i = 0; i < size.x; i++)
         {
-            for(int j = 0; j < size.y; j++)
+            for (int j = 0; j < size.y; j++)
             {
                 Cell currentCell = board[Mathf.FloorToInt(i + j * size.x)];
                 if (currentCell.visited)
@@ -48,7 +48,7 @@ public class DunegonGenerator : MonoBehaviour
                     newRoom.UpdateRoom(currentCell.status);
 
                     newRoom.name += " " + i + " " + j;
-                    
+
                 }
             }
         }
@@ -63,7 +63,8 @@ public class DunegonGenerator : MonoBehaviour
     {
         board = new List<Cell>();
 
-        for (int i = 0; i < size.x; i++) {
+        for (int i = 0; i < size.x; i++)
+        {
             for (int j = 0; j < size.y; j++)
             {
                 board.Add(new Cell());
@@ -82,7 +83,7 @@ public class DunegonGenerator : MonoBehaviour
 
             board[currentCell].visited = true;
 
-            if(currentCell == board.Count - 1)
+            if (currentCell == board.Count - 1)
             {
                 break;
             }
@@ -90,12 +91,13 @@ public class DunegonGenerator : MonoBehaviour
             //check cell neighbours
             List<int> neighbours = CheckNeighbours(currentCell);
 
-            if(neighbours.Count == 0)
+            if (neighbours.Count == 0)
             {
-                if(path.Count == 0)
+                if (path.Count == 0)
                 {
                     break;
-                } else
+                }
+                else
                 {
                     currentCell = path.Pop();
                 }
@@ -106,10 +108,10 @@ public class DunegonGenerator : MonoBehaviour
 
                 int newCell = neighbours[Random.Range(0, neighbours.Count)];
 
-                if(newCell > currentCell)
+                if (newCell > currentCell)
                 {
                     //down or right
-                    if(newCell-1 == currentCell)
+                    if (newCell - 1 == currentCell)
                     {
                         board[currentCell].status[2] = true;
                         currentCell = newCell;
@@ -121,7 +123,8 @@ public class DunegonGenerator : MonoBehaviour
                         currentCell = newCell;
                         board[currentCell].status[0] = true;
                     }
-                } else
+                }
+                else
                 {
                     //up or left
                     if (newCell + 1 == currentCell)
@@ -148,7 +151,7 @@ public class DunegonGenerator : MonoBehaviour
     {
         List<int> neighbours = new List<int>();
 
-        if(cell - size.x >= 0 && !board[Mathf.FloorToInt(cell - size.x)].visited)
+        if (cell - size.x >= 0 && !board[Mathf.FloorToInt(cell - size.x)].visited)
         {
             neighbours.Add(Mathf.FloorToInt(cell - size.x));
         }
@@ -158,7 +161,7 @@ public class DunegonGenerator : MonoBehaviour
             neighbours.Add(Mathf.FloorToInt(cell + size.x));
         }
 
-        if ((cell+1) % size.x != 0 && !board[Mathf.FloorToInt(cell + 1)].visited)
+        if ((cell + 1) % size.x != 0 && !board[Mathf.FloorToInt(cell + 1)].visited)
         {
             neighbours.Add(Mathf.FloorToInt(cell + 1));
         }

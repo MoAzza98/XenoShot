@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GamePlay.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/Scenes/WinPanel.unity
+    guid: 37aa11508c2ba2646adaf26e27feba1a
+  - enabled: 1
     path: Assets/Scenes/Home.unity
     guid: 8268743048d5cf04b8c411d6a30771a1
   m_configObjects: {}

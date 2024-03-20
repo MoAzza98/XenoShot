@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponPickup : MonoBehaviour
+public class weaponPickup : MonoBehaviour
 {
     public RaycastWeapon weaponFab;
 

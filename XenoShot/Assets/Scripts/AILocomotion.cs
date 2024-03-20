@@ -104,7 +104,7 @@ public class AILocomotion : MonoBehaviour
             }
             else
             {
-                Debug.LogError("Bullet prefab does not have a Rigidbody component!");
+                
                 return;
             }
 
