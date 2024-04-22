@@ -29,4 +29,9 @@ public class UIHealthbar : MonoBehaviour
         foregroundImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
     }
 
+    public void ShowDamage()
+    {
+
+    }
+
 }

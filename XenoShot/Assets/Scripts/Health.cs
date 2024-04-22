@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class Health : MonoBehaviour
 {
     public static Health Instance;
+    public GameObject damageNumber;
     [HideInInspector]
     public float currentHealth;
     public float maxHealth;
@@ -20,6 +21,8 @@ public class Health : MonoBehaviour
     public bool isBoss; // Flag to identify if this entity is a boss
     private SpawnEnemy spawnEnemy; // Reference to the SpawnEnemy script
     //public GameObject winPanel; // Reference to the win panel
+
+    public Transform targetTransform;
     
 
     // Start is called before the first frame update
@@ -53,13 +56,34 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float amount, Vector3 direction)
     {
+        bool isCrit = (Random.Range(0, 10) > 8);
+
+        if (isCrit) 
+        { 
+            amount = amount * 2; 
+        }
         currentHealth -= amount;
         Debug.Log(currentHealth);
         healthBar.SetHealthBarPercentage(currentHealth/maxHealth);
+
+        //instantiate a damage number using amount float
+        if(currentHealth > 0)
+        {
+
+            DamagePopup.Create(Vector3.zero, (int)amount, isCrit);
+        }
+
+
         if(currentHealth <= 0.0f)
         {
             Die(direction);
         }
+    }
+
+    void ShowDamageNumber(float amount)
+    {
+        var go = Instantiate(damageNumber, (targetTransform.position - Camera.main.transform.position).normalized, Quaternion.identity, transform);
+        go.GetComponent<TextMesh>().text = amount.ToString();
     }
 
     private void Die(Vector3 force)

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571385, b: 0.30692253, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -855,8 +855,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416383243}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11899075, y: 0.88069284, z: -0.31138608, w: 0.33654135}
-  m_LocalPosition: {x: -8.099609, y: 9.815596, z: 9.050345}
+  m_LocalRotation: {x: 0.11998087, y: 0.87962437, z: -0.31112143, w: 0.3392183}
+  m_LocalPosition: {x: -8.151499, y: 9.816226, z: 8.997021}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2258,7 +2258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cfuStatus: PSXEffects v1.18.4 - version ahead?!
   sections: 01010101
-  customRes: {x: 640, y: 360}
+  customRes: {x: 326, y: 169}
   resolutionFactor: 3
   limitFramerate: 60
   skipFrames: 0
@@ -8522,7 +8522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3266666771650419902, guid: 6d4b1adcfb0f0bf40848d74c8c6dd7c5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4991514072582504783, guid: 6d4b1adcfb0f0bf40848d74c8c6dd7c5, type: 3}
       propertyPath: m_RootOrder

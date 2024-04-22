@@ -7,6 +7,7 @@ public class RoomPopulator : MonoBehaviour
     public GameObject propsParent;
     public Vector2 size;
     public int maxItems;
+    public int maxPowers;
 
     [SerializeField] private GameObject[] roomObjects;
 
@@ -35,6 +36,17 @@ public class RoomPopulator : MonoBehaviour
         {
             Vector3 randomSpawnPos = new Vector3(Random.Range(transform.position.x + size.x, transform.position.x + size.y + 1), 0, Random.Range(transform.position.z + size.x, transform.position.z + size.y + 1));
             Instantiate(roomObjects[Random.Range(0, roomObjects.Length)], randomSpawnPos, Quaternion.identity, propsParent.transform);
+        }
+    }
+
+    public void SpawnPowerups()
+    {
+        int powersInRoom = Random.Range(0, maxPowers);
+
+        for (int i = 0; i <= powersInRoom; i++)
+        {
+            //select a random powerup prefab to spawn
+            //spawn powerup prefab at random location
         }
     }
 }

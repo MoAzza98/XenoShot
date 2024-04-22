@@ -45,6 +45,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: UITop
+    uniqueID: 4122407285
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

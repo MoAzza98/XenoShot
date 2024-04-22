@@ -70,6 +70,8 @@ public class RaycastWeapon : MonoBehaviour
         {
             //Debug.DrawLine(ray.origin, hitInfo.point, Color.red, 1.0f);
 
+            Debug.Log(hitInfo.transform.name);
+
             hitEffect.transform.position = hitInfo.point;
             hitEffect.transform.forward = hitInfo.normal;
             hitEffect.Emit(1);

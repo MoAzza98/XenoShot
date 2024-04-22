@@ -35,6 +35,9 @@ public class DunegonGenerator : MonoBehaviour
 
     }
 
+    //find coordinates of last room and attach some kind of event to the creation of that room
+    //trigger a boss spawn on that event in that location
+
     void GenerateDungeon()
     {
         for (int i = 0; i < size.x; i++)
