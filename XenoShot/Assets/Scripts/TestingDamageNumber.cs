@@ -17,7 +17,7 @@ public class TestingDamageNumber : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            DamagePopup.Create(Vector3.zero, 300, true);
+            //DamagePopup.Create(Vector3.zero, 300, true);
         }
     }
 }

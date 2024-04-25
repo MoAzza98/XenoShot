@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
     public static Health Instance;
     public GameObject damageNumber;
-    [HideInInspector]
     public float currentHealth;
     public float maxHealth;
     public float dieForce;
@@ -21,13 +21,19 @@ public class Health : MonoBehaviour
     public bool isBoss; // Flag to identify if this entity is a boss
     private SpawnEnemy spawnEnemy; // Reference to the SpawnEnemy script
     //public GameObject winPanel; // Reference to the win panel
+    private Hitmarker hitmarker;
+    private Image hitmarkerImage;
 
     public Transform targetTransform;
+
+    [SerializeField] private GameObject hitmarkerIcon;
+    [SerializeField] private Animator deathmarkerAnim;
     
 
     // Start is called before the first frame update
     void Start()
     {
+        hitmarker = hitmarkerIcon.GetComponent<Hitmarker>();
 
         currentHealth = maxHealth;
 
@@ -54,23 +60,30 @@ public class Health : MonoBehaviour
         
     }
 
-    public void TakeDamage(float amount, Vector3 direction)
+    public void TakeDamage(float amount, Vector3 direction, bool isHead)
     {
+        hitmarker.hitmarkerTimer =+ 0.1f;
+
         bool isCrit = (Random.Range(0, 10) > 8);
+
+        if(isHead)
+        {
+            amount = amount * 2;
+        }
 
         if (isCrit) 
         { 
             amount = amount * 2; 
         }
+
         currentHealth -= amount;
-        Debug.Log(currentHealth);
+        Debug.Log(transform.name + "deducted " + currentHealth + "HP");
         healthBar.SetHealthBarPercentage(currentHealth/maxHealth);
 
         //instantiate a damage number using amount float
         if(currentHealth > 0)
         {
-
-            DamagePopup.Create(Vector3.zero, (int)amount, isCrit);
+            DamagePopup.Create(Vector3.zero, (int)amount, isCrit, isHead);
         }
 
 
@@ -90,6 +103,7 @@ public class Health : MonoBehaviour
     {
         // Increase the score when an enemy dies
         ScoreManager.instance.AddEnemyKillScore(); // Call AddEnemyKillScore() method from ScoreManager
+        hitmarker.deathmarkerTimer = +1f;
 
         // Perform other death-related actions (e.g., play death animation, destroy GameObject)
         aiLocomotion.enabled = false;

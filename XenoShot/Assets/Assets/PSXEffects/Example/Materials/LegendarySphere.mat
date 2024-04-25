@@ -7,8 +7,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Transparent
+  m_Name: LegendarySphere
   m_Shader: {fileID: 4800000, guid: 94cb0d6305cd4a743b1d2ec684e277de, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - BFC
   - DIFF_VERTEX
@@ -27,6 +29,7 @@ Material:
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -123,7 +126,7 @@ Material:
     - _VertexInaccuracy: -1
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0, g: 0.98978424, b: 1, a: 0.5529412}
+    - _Color: {r: 0.8490566, g: 0.7125277, b: 0, a: 0.5529412}
     - _Emission: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

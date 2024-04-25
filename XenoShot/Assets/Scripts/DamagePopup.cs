@@ -14,13 +14,13 @@ public class DamagePopup : MonoBehaviour
     private Color textColor;
     private Vector3 moveVector;
 
-    public static DamagePopup Create(Vector3 position, int damageAmount, bool isCriticalHit)
+    public static DamagePopup Create(Vector3 position, int damageAmount, bool isCriticalHit, bool isHeadShot)
     {
         GameObject damagePopTransform = Instantiate(GameAssets.i.pfDamagePopup, position, Quaternion.identity).gameObject;
         damagePopTransform.transform.SetParent(GameAssets.i.pfDamageParent, false);
 
         DamagePopup damagePop = damagePopTransform.GetComponent<DamagePopup>();
-        damagePop.Setup(damageAmount, isCriticalHit);
+        damagePop.Setup(damageAmount, isCriticalHit, isHeadShot);
         return damagePop;
     }
 
@@ -29,17 +29,21 @@ public class DamagePopup : MonoBehaviour
         textMesh = transform.GetComponent<TextMeshProUGUI>();
     }
 
-    public void Setup(int damageAmount, bool isCriticalHit)
+    public void Setup(int damageAmount, bool isCriticalHit, bool isHeadShot)
     {
         textMesh.SetText(damageAmount.ToString());
-        if (!isCriticalHit)
+        if (isHeadShot)
         {
-            textMesh.fontSize = 36;
+            textMesh.fontSize = 25;
+            textColor = UtilsClass.GetColorFromString("FFFE00");
+        }
+        else if (!isCriticalHit)
+        {
             textColor = UtilsClass.GetColorFromString("FFFCFC");
         }
         else
         {
-            textMesh.fontSize = 45;
+            textMesh.fontSize = 36;
             textColor = UtilsClass.GetColorFromString("F63300");
         }
         textMesh.color = textColor;
