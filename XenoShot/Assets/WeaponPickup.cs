@@ -5,14 +5,17 @@ using UnityEngine;
 public class weaponPickup : MonoBehaviour
 {
     public RaycastWeapon weaponFab;
-    public DisplayWeaponPickup pickup;
+    private DisplayWeaponPickup pickup;
 
     private string weaponName;
     private int rarityIndex;
     private GameObject displayModel;
 
     public Material[] rarityMaterials;
-    public RaycastWeapon[] weaponList;
+    public RaycastWeapon[] commonWeaponList;
+    public RaycastWeapon[] rareWeaponList;
+    public RaycastWeapon[] epicWeaponList;
+    public RaycastWeapon[] legendaryWeaponList;
     public GameObject[] weaponModels;
 
     [SerializeField] private MeshRenderer mRenderer;
@@ -22,15 +25,29 @@ public class weaponPickup : MonoBehaviour
     {
         //we determine the rarity of the drop, and set rarityindex to the corresponding number
         SetRarity();
-
+        pickup = GameObject.FindAnyObjectByType<DisplayWeaponPickup>();
 
         //based on the rarityindex, we select the correct meterial from the array we've filled out in the inspector.
         //the materials in the inspector should be placed in order of rarity
         mRenderer.material = rarityMaterials[rarityIndex-1];
 
-        int weaponSelectIndex = Random.Range(0, weaponList.Length);
+        int weaponSelectIndex = Random.Range(0, commonWeaponList.Length);
 
-        weaponFab = weaponList[weaponSelectIndex];
+        switch (rarityIndex)
+        {
+            case 1:
+                weaponFab = commonWeaponList[weaponSelectIndex];
+                break;
+            case 2:
+                weaponFab = rareWeaponList[weaponSelectIndex];
+                break;
+            case 3:
+                weaponFab = epicWeaponList[weaponSelectIndex];
+                break;
+            case 4:
+                weaponFab = legendaryWeaponList[weaponSelectIndex];
+                break;
+        }
 
         displayModel = Instantiate(weaponModels[weaponSelectIndex], gameObject.transform);
     }

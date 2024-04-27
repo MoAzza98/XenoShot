@@ -179,12 +179,30 @@ MonoBehaviour:
   - {fileID: 2100000, guid: d2767cf7d976a6d4fbbe3ba9d4ceae53, type: 2}
   - {fileID: 2100000, guid: c5255dbba16d7d04192a79c7967753a6, type: 2}
   - {fileID: 2100000, guid: 9963bb01348aef5459888e209a1e0cf4, type: 2}
-  weaponList:
+  commonWeaponList:
   - {fileID: 203896445880511416, guid: da3b4e5141a283f4884ab1810fe6e053, type: 3}
   - {fileID: 2425448504269883189, guid: 9fce44f1e4b352846a8aac0b52be797b, type: 3}
   - {fileID: 8444088784033032585, guid: 1e3b314b5364c7047b6384086c809c64, type: 3}
   - {fileID: 203896445880511416, guid: 342e0f520105d6c41838aadef8da40c7, type: 3}
   - {fileID: 203896445880511416, guid: 1add4826a18ab66469c27760ab257f40, type: 3}
+  rareWeaponList:
+  - {fileID: 203896445880511416, guid: 842fde6cc26fb024287b96b756747ef2, type: 3}
+  - {fileID: 2425448504269883189, guid: 8e0f8ddc9a485ed439479d9c30f3b206, type: 3}
+  - {fileID: 8444088784033032585, guid: e5fb7748cdd06834fa261913c7fd1818, type: 3}
+  - {fileID: 203896445880511416, guid: e535a794fd2d3da4ebcd32e7896a0c51, type: 3}
+  - {fileID: 203896445880511416, guid: 9ebec8ef33737074290ea86433149670, type: 3}
+  epicWeaponList:
+  - {fileID: 203896445880511416, guid: f0bc7f635b1450947927e070986a731a, type: 3}
+  - {fileID: 2425448504269883189, guid: 560dc4430eedb804c976896154c6bc24, type: 3}
+  - {fileID: 8444088784033032585, guid: de19e3fff157a1a4baa456e2ebe70b60, type: 3}
+  - {fileID: 203896445880511416, guid: 2f99dd786fe8e434f8821d8f5e895a2d, type: 3}
+  - {fileID: 203896445880511416, guid: 2be6b05e636634744b0266c7f2f662a9, type: 3}
+  legendaryWeaponList:
+  - {fileID: 203896445880511416, guid: dffb11e5337780e4dab4142dd90ea6c4, type: 3}
+  - {fileID: 2425448504269883189, guid: b022b2f7d96eb134c8e9b9cb4633f384, type: 3}
+  - {fileID: 8444088784033032585, guid: c332b38d880529a4d9708459ac4c7b8c, type: 3}
+  - {fileID: 203896445880511416, guid: 6aa8072e690a58c479e6859a769b4c99, type: 3}
+  - {fileID: 203896445880511416, guid: 6d2838300d53e17458d167830be559e2, type: 3}
   weaponModels:
   - {fileID: 2986233152281409089, guid: e651077b77a1e0a41a47c11c647a1b4e, type: 3}
   - {fileID: 1943511182538512763, guid: 7edf6738cc3c54b4fbbae977896dfbae, type: 3}

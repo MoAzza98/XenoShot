@@ -21954,8 +21954,8 @@ MonoBehaviour:
   weaponAnimation: {fileID: 7400000, guid: d461b2614972a4f44b01d162368aabbb, type: 2}
   gunType: 1
   isAuto: 0
-  fireRate: 1
-  damage: 10
+  fireRate: 2
+  damage: 9
 --- !u!1 &6516752044605469760
 GameObject:
   m_ObjectHideFlags: 0

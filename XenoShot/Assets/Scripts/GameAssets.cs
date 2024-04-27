@@ -18,6 +18,7 @@ public class GameAssets : MonoBehaviour
 
     public Transform pfDamagePopup;
     public Transform pfDamageParent;
+    public DisplayWeaponPickup pickupScript;
     public Camera cam;
 
     private void Awake()

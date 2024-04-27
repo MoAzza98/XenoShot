@@ -31564,7 +31564,7 @@ MonoBehaviour:
   gunType: 1
   isAuto: 1
   fireRate: 3
-  damage: 17
+  damage: 7
 --- !u!114 &5825412736407179296
 MonoBehaviour:
   m_ObjectHideFlags: 0
