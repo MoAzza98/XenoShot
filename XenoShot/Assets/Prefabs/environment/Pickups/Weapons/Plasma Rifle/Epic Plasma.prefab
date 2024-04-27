@@ -10253,7 +10253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8345438664057919802}
   m_Layer: 0
-  m_Name: WeaponPickup_SNIPERPLASMA
+  m_Name: Epic Plasma
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20876,6 +20876,7 @@ MonoBehaviour:
   isRare: 0
   isEpic: 1
   isLegendary: 0
+  rarityMaterials: []
 --- !u!1 &5971743405263644745
 GameObject:
   m_ObjectHideFlags: 0

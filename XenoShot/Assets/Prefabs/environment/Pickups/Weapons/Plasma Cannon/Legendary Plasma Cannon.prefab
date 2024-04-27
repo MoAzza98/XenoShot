@@ -1914,7 +1914,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3085794793948784246}
   m_Layer: 0
-  m_Name: WeaponPickup_SMAW
+  m_Name: Legendary Plasma Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
