@@ -17,6 +17,7 @@ public class DunegonGenerator : MonoBehaviour
     public Vector2 size;
     public int startPos = 0;
     public GameObject room;
+    public GameObject doubleRoom;
     public Vector2 offset;
     RoomPopulator populator;
 
@@ -47,11 +48,21 @@ public class DunegonGenerator : MonoBehaviour
                 Cell currentCell = board[Mathf.FloorToInt(i + j * size.x)];
                 if (currentCell.visited)
                 {
-                    var newRoom = Instantiate(room, new Vector3(i * offset.x, 0, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
-                    newRoom.UpdateRoom(currentCell.status);
+                    int roomType = Random.Range(1, 10);
+                    if(roomType < 8)
+                    {
+                        var newRoom = Instantiate(room, new Vector3(i * offset.x, 0, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
+                        newRoom.UpdateRoom(currentCell.status);
 
-                    newRoom.name += " " + i + " " + j;
+                        newRoom.name += " " + i + " " + j;
+                    }
+                    else
+                    {
+                        var newRoom = Instantiate(doubleRoom, new Vector3(i * offset.x, 0, -j * offset.y), Quaternion.identity, transform).GetComponent<RoomBehaviour>();
+                        newRoom.UpdateRoom(currentCell.status);
 
+                        newRoom.name += " " + i + " " + j;
+                    }
                 }
             }
         }
