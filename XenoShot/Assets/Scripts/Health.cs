@@ -11,9 +11,7 @@ public class Health : MonoBehaviour
     public GameObject damageNumber;
     public float currentHealth;
     public float maxHealth;
-    public float dieForce;
-    Ragdoll ragdoll;
-    NavMeshAgent agent;
+    AiAgent agent;
     UIHealthbar healthBar;
     EnemyLockOn enemyLockOn;
     AILocomotion aiLocomotion;
@@ -36,12 +34,10 @@ public class Health : MonoBehaviour
         hitmarker = hitmarkerIcon.GetComponent<Hitmarker>();
 
         currentHealth = maxHealth;
-
+        agent = GetComponent<AiAgent>();
         // Find and store reference to the SpawnEnemy script
         spawnEnemy = FindObjectOfType<SpawnEnemy>();
         currentHealth = maxHealth;
-        ragdoll = GetComponent<Ragdoll>();
-        agent = GetComponent<NavMeshAgent>();
         healthBar = GetComponentInChildren<UIHealthbar>();
         enemyLockOn = FindAnyObjectByType<EnemyLockOn>();
         aiLocomotion = GetComponent<AILocomotion>();
@@ -101,29 +97,17 @@ public class Health : MonoBehaviour
 
     private void Die(Vector3 force)
     {
+
+        AiDeathState deathState = agent.stateMachine.GetState(AiStateId.Death) as AiDeathState;
+
+        deathState.direction = force;
+        agent.stateMachine.ChangeState(AiStateId.Death);
+
         // Increase the score when an enemy dies
-        ScoreManager.instance.AddEnemyKillScore(); // Call AddEnemyKillScore() method from ScoreManager
         hitmarker.deathmarkerTimer = +1f;
 
         // Perform other death-related actions (e.g., play death animation, destroy GameObject)
-        aiLocomotion.enabled = false;
-        enemyLockOn.ResetTarget();
-        healthBar.gameObject.SetActive(false);
-        ragdoll.ActivateRagdoll();
-        force.y = 1;
-        ragdoll.ApplyForce(force * dieForce);
-        agent.enabled = false;
         Destroy(gameObject, 2f);
-        
-
-        // Check if this entity is a boss and if its health has reached zero
-        if (isBoss && currentHealth <= 0)
-        {
-            Time.timeScale = 0;
-
-            SceneManager.LoadScene("WinPanel");
-            
-        }
     }
 
 

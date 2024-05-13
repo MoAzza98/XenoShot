@@ -4,7 +4,10 @@ using UnityEngine;
 
 public enum AiStateId
 {
-    ChasePlayer
+    ChasePlayer,
+    Death,
+    Idle,
+    FindWeapon
 }
 
 public interface AiState

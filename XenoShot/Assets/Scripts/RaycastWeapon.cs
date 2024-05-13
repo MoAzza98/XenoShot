@@ -13,6 +13,7 @@ public class RaycastWeapon : MonoBehaviour
     public Transform raycastDestination;
     public TrailRenderer tracerEffect;
     public AnimationClip weaponAnimation;
+    public WeaponType weaponType;
     public GunType gunType;
 
     public bool isAuto;
@@ -105,4 +106,13 @@ public enum GunType
     OneHanded,
     TwoHanded,
     Special
+}
+
+public enum WeaponType
+{
+    MP5,
+    PlasmaRifle,
+    PlasmaCannon,
+    SMAW,
+    Benelli,
 }

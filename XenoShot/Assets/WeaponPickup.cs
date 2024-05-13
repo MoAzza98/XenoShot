@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class weaponPickup : MonoBehaviour
+public class WeaponPickup : MonoBehaviour
 {
     public RaycastWeapon weaponFab;
     private DisplayWeaponPickup pickup;
@@ -29,7 +29,14 @@ public class weaponPickup : MonoBehaviour
 
         //based on the rarityindex, we select the correct meterial from the array we've filled out in the inspector.
         //the materials in the inspector should be placed in order of rarity
-        mRenderer.material = rarityMaterials[rarityIndex-1];
+        try
+        {
+            mRenderer.material = rarityMaterials[rarityIndex-1];
+        }
+        catch(System.Exception e)
+        {
+            Debug.Log(e);
+        }
 
         int weaponSelectIndex = Random.Range(0, commonWeaponList.Length);
 
@@ -54,15 +61,28 @@ public class weaponPickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        pickup.DisplayPickupText(rarityIndex, displayModel.name);
 
         ActiveWeapon activeWeapon = other.gameObject.GetComponent<ActiveWeapon>();
+        if(activeWeapon != null)
+        {
+            pickup.DisplayPickupText(rarityIndex, displayModel.name);
+        }
 
         if (activeWeapon)
         {
             RaycastWeapon weapon = Instantiate(weaponFab, activeWeapon.weaponParent);
             activeWeapon.EquipWeapon(weapon);
         }
+
+        AiWeapon aiWeapon = other.gameObject.GetComponent<AiWeapon>();
+        if (aiWeapon)
+        {
+            WeaponOffsets offsetVal = other.gameObject.GetComponentInChildren<WeaponOffsets>();
+            RaycastWeapon newWeapon = Instantiate(weaponFab);
+            offsetVal.SetOffset(newWeapon.weaponType);
+            aiWeapon.Equip(newWeapon);
+        }
+
     }
 
     private void SetRarity()

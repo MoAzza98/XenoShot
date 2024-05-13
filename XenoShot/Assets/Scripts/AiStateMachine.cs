@@ -31,4 +31,11 @@ public class AiStateMachine
     {
         GetState(currentState)?.Update(agent);
     }
+
+    public void ChangeState(AiStateId newState)
+    {
+        GetState(currentState)?.Exit(agent);
+        currentState = newState;
+        GetState(currentState)?.Enter(agent);
+    }
 }

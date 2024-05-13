@@ -120,6 +120,7 @@ MonoBehaviour:
   raycastDestination: {fileID: 0}
   tracerEffect: {fileID: 6808684926648176773, guid: 02713073e98eee7448ce13445d437a2e, type: 3}
   weaponAnimation: {fileID: 7400000, guid: d461b2614972a4f44b01d162368aabbb, type: 2}
+  weaponType: 3
   gunType: 1
   isAuto: 0
   fireRate: 1
@@ -4818,6 +4819,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2514427873196204369}
+  - component: {fileID: 6078943433102096724}
   m_Layer: 0
   m_Name: RayCastOrigin
   m_TagString: Untagged
@@ -4840,6 +4842,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 203896445879217034}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &6078943433102096724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2514427873196204368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be0a7da98344378418d4edb6dc2a7cb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2514427873310729271
 GameObject:
   m_ObjectHideFlags: 0
@@ -24374,8 +24388,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2514427874332808562}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6855641, y: 0.105212204, z: -0.093216896, w: 0.714313}
-  m_LocalPosition: {x: 0.78047, y: -0.49178898, z: 1.4519681}
+  m_LocalRotation: {x: -0.01175813, y: 0.9893532, z: -0.043477315, w: -0.13838996}
+  m_LocalPosition: {x: 32.82761, y: 3.0947096, z: 34.01071}
   m_LocalScale: {x: 1.5000012, y: 1.5000004, z: 1.5000013}
   m_ConstrainProportionsScale: 0
   m_Children:
