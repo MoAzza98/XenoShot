@@ -16,6 +16,8 @@ public class RaycastWeapon : MonoBehaviour
     public WeaponType weaponType;
     public GunType gunType;
 
+    public GameObject magazine;
+
     public bool isAuto;
     public int fireRate = 25;
     public float damage = 10;

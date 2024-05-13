@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -63,6 +64,14 @@ public class WeaponOffsets : MonoBehaviour
 
         if (offsetValues != null)
         {
+            try
+            {
+                ResetChildValues();
+            } catch (Exception e)
+            {
+                Debug.Log(e);
+            }
+
             offset.transform.localPosition = offsetValues[0];
             offset.transform.localEulerAngles = offsetValues[1];
             offset.transform.localScale = offsetValues[2];
@@ -98,6 +107,7 @@ public class WeaponOffsets : MonoBehaviour
 
     private void LoadOffset(ref Vector3[] offsetArray)
     {
+
         offsetArray[0] = offset.transform.localPosition;
         offsetArray[1] = offset.transform.localEulerAngles;
         offsetArray[2] = offset.transform.localScale;
@@ -106,11 +116,29 @@ public class WeaponOffsets : MonoBehaviour
     void Update()
     {
         // Optionally, continually update offsets in real time for editing purposes
-        /*
         if (Input.GetKeyDown(KeyCode.U))  // Press 'U' to update offsets for the currently selected editable weapon
         {
             LoadOffsets(editableWeaponType);
             Debug.Log("Offsets updated for " + editableWeaponType);
-        }*/
+        }
+    }
+
+    private void ResetChildValues()
+    {
+        Transform childTransform;
+        childTransform = offset.transform.GetChild(0);
+        Debug.Log(childTransform);
+
+        if (childTransform != null)
+        {
+            // Reset position and rotation
+            childTransform.localPosition = Vector3.zero; // Resets local position
+            childTransform.localEulerAngles = Vector3.zero; // Resets local rotation to "no rotation"
+            Debug.Log("Reset child transform");
+        }
+        else
+        {
+            Debug.LogError("Child not found!");
+        }
     }
 }

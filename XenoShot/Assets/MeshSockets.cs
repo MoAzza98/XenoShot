@@ -6,6 +6,7 @@ public class MeshSockets : MonoBehaviour
 {
     public enum SocketId
     {
+        RightHand,
         Spine
     }
 

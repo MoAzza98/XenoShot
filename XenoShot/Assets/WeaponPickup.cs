@@ -79,8 +79,8 @@ public class WeaponPickup : MonoBehaviour
         {
             WeaponOffsets offsetVal = other.gameObject.GetComponentInChildren<WeaponOffsets>();
             RaycastWeapon newWeapon = Instantiate(weaponFab);
-            offsetVal.SetOffset(newWeapon.weaponType);
             aiWeapon.Equip(newWeapon);
+            offsetVal.SetOffset(newWeapon.weaponType); //This must come after Equip() as we zero out the weapons position and rotation here, error happens if we try to do it with no weapon
         }
 
     }
