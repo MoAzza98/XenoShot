@@ -47,7 +47,7 @@ public class WeaponIK : MonoBehaviour
         float targetAngle = Vector3.Angle(targetDirection, aimDirection);
         if(targetAngle > angleLimit)
         {
-            Debug.Log($"Target angle is larger than angle limit. Target Angle: {targetAngle} Angle Limit: {angleLimit}");
+            //Debug.Log($"Target angle is larger than angle limit. Target Angle: {targetAngle} Angle Limit: {angleLimit}");
             blendOut += (targetAngle - angleLimit) / 50.0f;
         }
 
@@ -83,6 +83,11 @@ public class WeaponIK : MonoBehaviour
                 Transform bone = boneTransforms[b];
                 float boneWeight = humanBones[b].weight * weight;
                 AimAtTarget(bone, targetPosition, boneWeight);
+                try { 
+                } catch(Exception e)
+                {
+                    Debug.Log(e);
+                }
             }
         }
 

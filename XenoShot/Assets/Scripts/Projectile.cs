@@ -25,7 +25,7 @@ public class Projectile : MonoBehaviour
     {
         if (!collisionOccured)
         {
-            collision.transform.root.TryGetComponent<Health>(out var health); health.TakeDamage(damage, transform.position, false);
+            collision.transform.root.TryGetComponent<Health>(out var health); health.TakeDamage(damage, transform.position);
             collisionOccured = true;
         }
     }

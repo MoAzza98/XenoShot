@@ -10,6 +10,7 @@ public class AiAttackPlayerState : AiState
         agent.weapon.SetTarget(agent.playerTransform);
         agent.navMeshAgent.stoppingDistance = 5.0f;
         Debug.Log(agent.playerTransform);
+        agent.weapon.SetFiring(true);
     }
 
     public void Exit(AiAgent agent)

@@ -31571,14 +31571,20 @@ MonoBehaviour:
   muzzleFlash: {fileID: 8572488812909864554}
   hitEffect: {fileID: 9007511613064419283}
   raycastOrigin: {fileID: 4927755048855945746}
-  raycastDestination: {fileID: 0}
   tracerEffect: {fileID: 6808684926648176773, guid: 02713073e98eee7448ce13445d437a2e, type: 3}
   weaponAnimation: {fileID: 7400000, guid: c191c8736f5fde5478269ced55737800, type: 2}
   weaponType: 1
   gunType: 1
   isAuto: 1
+  bulletSpeed: 1000
+  bulletDrop: 1
   fireRate: 4
   damage: 7
+  layer:
+    serializedVersion: 2
+    m_Bits: 4161
+  ammoCount: 15
+  clipSize: 60
 --- !u!114 &5825412736407179296
 MonoBehaviour:
   m_ObjectHideFlags: 0

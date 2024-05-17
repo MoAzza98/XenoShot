@@ -11,6 +11,8 @@ public class ActiveWeapon : MonoBehaviour
     public Transform weaponParent;
     public Transform lGrip;
     public Transform rGrip;
+    public AmmoWidget ammoWidget;
+    private ReloadWeapon reload;
 
     RaycastWeapon weapon;
     Animator animator;
@@ -22,6 +24,7 @@ public class ActiveWeapon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        reload = GetComponent<ReloadWeapon>();
         animator = GetComponent<Animator>();
         overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
         RaycastWeapon existingWeapon = GetComponentInChildren<RaycastWeapon>();
@@ -31,18 +34,26 @@ public class ActiveWeapon : MonoBehaviour
         }
     }
 
+    public RaycastWeapon GetActiveWeapon()
+    {
+        return weapon;
+    }
+
     // Update is called once per frame
     void Update()
     {
         if(weapon)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse0) && !reload.isReloading)
             {
-                weapon.StartFiring();
-            }
-            if (weapon.isFiring)
-            {
-                weapon.UpdateFiring(Time.deltaTime);
+                if (!weapon.isFiring)
+                {
+                    weapon.StartFiring(crossHairTarget.position);
+                }
+                else
+                {
+                    weapon.UpdateFiring(Time.deltaTime, crossHairTarget.position);
+                }
             }
             if (Input.GetKeyUp(KeyCode.Mouse0))
             {
@@ -54,6 +65,8 @@ public class ActiveWeapon : MonoBehaviour
             handIK.weight = 0f;
             animator.SetLayerWeight(1, 0.0f);
         }
+
+        weapon.UpdateBullets(Time.deltaTime);
     }
 
     public void EquipWeapon(RaycastWeapon newWeapon)
@@ -70,7 +83,6 @@ public class ActiveWeapon : MonoBehaviour
             lArm.weight = 1f;
         }
         weapon = newWeapon;
-        weapon.raycastDestination = crossHairTarget;
         //weapon.transform.parent = weaponParent;
         //weapon.transform.localPosition = Vector3.zero;
         //weapon.transform.localRotation = Quaternion.identity;
@@ -78,6 +90,8 @@ public class ActiveWeapon : MonoBehaviour
         handIK.weight = 1f;
         animator.SetLayerWeight(1, 1.0f);
         Invoke(nameof(SetAnimationDelayed), 0.00001f);
+
+        ammoWidget.RefreshAmmo(weapon.ammoCount);
     }
 
     void SetAnimationDelayed()

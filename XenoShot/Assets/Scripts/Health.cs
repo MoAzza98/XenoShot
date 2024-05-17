@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using System;
 
 public class Health : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class Health : MonoBehaviour
     public GameObject damageNumber;
     public float currentHealth;
     public float maxHealth;
-    AiAgent agent;
     UIHealthbar healthBar;
     EnemyLockOn enemyLockOn;
     AILocomotion aiLocomotion;
@@ -19,7 +19,7 @@ public class Health : MonoBehaviour
     public bool isBoss; // Flag to identify if this entity is a boss
     private SpawnEnemy spawnEnemy; // Reference to the SpawnEnemy script
     //public GameObject winPanel; // Reference to the win panel
-    private Hitmarker hitmarker;
+    public static Hitmarker hitmarker;
     private Image hitmarkerImage;
 
     public Transform targetTransform;
@@ -31,10 +31,14 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hitmarker = hitmarkerIcon.GetComponent<Hitmarker>();
+        try
+        {
+            hitmarker = hitmarkerIcon.GetComponent<Hitmarker>();
+        } catch (Exception e)
+        {
+            
+        }
 
-        currentHealth = maxHealth;
-        agent = GetComponent<AiAgent>();
         // Find and store reference to the SpawnEnemy script
         spawnEnemy = FindObjectOfType<SpawnEnemy>();
         currentHealth = maxHealth;
@@ -43,11 +47,20 @@ public class Health : MonoBehaviour
         aiLocomotion = GetComponent<AILocomotion>();
 
         var rigidBodies = GetComponentsInChildren<Rigidbody>();
-        foreach ( var rigidBody in rigidBodies)
+
+        Debug.Log($"{gameObject} rigidbodies are {rigidBodies}");
+
+        foreach (var rigidBody in rigidBodies)
         {
             Hitbox hitbox = rigidBody.gameObject.AddComponent<Hitbox>();
             hitbox.health = this;
+            if(hitbox.gameObject != gameObject)
+            {
+                hitbox.gameObject.layer = LayerMask.NameToLayer("HitBox");
+            }
         }
+
+        OnStart();
     }
 
     // Update is called once per frame
@@ -56,16 +69,17 @@ public class Health : MonoBehaviour
         
     }
 
-    public void TakeDamage(float amount, Vector3 direction, bool isHead)
+    public void TakeDamage(float amount, Vector3 direction)
     {
-        hitmarker.hitmarkerTimer =+ 0.1f;
+        //hitmarker.hitmarkerTimer =+ 0.1f;
 
-        bool isCrit = (Random.Range(0, 10) > 8);
+        bool isCrit = (UnityEngine.Random.Range(0, 10) > 8);
 
+        /*
         if(isHead)
         {
             amount = amount * 2;
-        }
+        }*/
 
         if (isCrit) 
         { 
@@ -74,14 +88,19 @@ public class Health : MonoBehaviour
 
         currentHealth -= amount;
         Debug.Log(transform.name + "deducted " + currentHealth + "HP");
-        healthBar.SetHealthBarPercentage(currentHealth/maxHealth);
+        
+        if (GetComponent<AiHealth>())
+        {
+            healthBar.SetHealthBarPercentage(currentHealth/maxHealth);
+        }
+
+        OnDamage(direction);
 
         //instantiate a damage number using amount float
         if(currentHealth > 0)
         {
-            DamagePopup.Create(Vector3.zero, (int)amount, isCrit, isHead);
+            DamagePopup.Create(Vector3.zero, (int)amount, isCrit, false);
         }
-
 
         if(currentHealth <= 0.0f)
         {
@@ -97,18 +116,22 @@ public class Health : MonoBehaviour
 
     private void Die(Vector3 force)
     {
-
-        AiDeathState deathState = agent.stateMachine.GetState(AiStateId.Death) as AiDeathState;
-
-        deathState.direction = force;
-        agent.stateMachine.ChangeState(AiStateId.Death);
-
-        // Increase the score when an enemy dies
-        hitmarker.deathmarkerTimer = +1f;
-
-        // Perform other death-related actions (e.g., play death animation, destroy GameObject)
-        Destroy(gameObject, 2f);
+        OnDeath(force);
     }
+
+    protected virtual void OnStart()
+    {
+
+    }
+    protected virtual void OnDeath(Vector3 direction)
+    {
+
+    }
+    protected virtual void OnDamage(Vector3 direction)
+    {
+
+    }
+
 
 
 }

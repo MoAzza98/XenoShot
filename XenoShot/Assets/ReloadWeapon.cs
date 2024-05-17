@@ -9,6 +9,12 @@ public class ReloadWeapon : MonoBehaviour
     public WeaponAnimationEvents wEvents;
     public ActiveWeapon activeWeapon;
     public Transform leftHand;
+    public AmmoWidget ammoWidget;
+    public bool isReloading;
+
+    public GameObject magazineItem;
+
+    private GameObject activeMag;
 
 
     // Start is called before the first frame update
@@ -20,9 +26,19 @@ public class ReloadWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        RaycastWeapon weapon = activeWeapon.GetActiveWeapon();
+        if (weapon)
         {
-            rigController.SetTrigger("ReloadWeapon");
+            if (Input.GetKeyDown(KeyCode.R) || weapon.ammoCount <=0)
+            {
+                rigController.SetTrigger("ReloadWeapon");
+                isReloading = true;
+            }
+
+            if (weapon.isFiring)
+            {
+                ammoWidget.RefreshAmmo(weapon.ammoCount);
+            }
         }
     }
 
@@ -51,21 +67,38 @@ public class ReloadWeapon : MonoBehaviour
 
     private void AttachMagazine()
     {
-        throw new NotImplementedException();
+        RaycastWeapon weapon = activeWeapon.GetActiveWeapon();
+        activeMag.SetActive(false);
+        weapon.ammoCount = weapon.clipSize;
+        rigController.ResetTrigger("ReloadWeapon");
+        isReloading = false;
+
+        ammoWidget.RefreshAmmo(weapon.ammoCount);
     }
 
     private void DetachMagazine()
     {
-        throw new NotImplementedException();
+        if(activeMag == null)
+        {
+            activeMag = Instantiate(magazineItem);
+
+            activeMag.transform.parent = leftHand;
+            activeMag.transform.localPosition = Vector3.zero;
+            activeMag.transform.rotation = leftHand.rotation;
+        }
     }
 
     private void DropMagazine()
     {
-        throw new NotImplementedException();
+        activeMag.SetActive(false);
+        GameObject droppedMag = Instantiate(magazineItem, leftHand.transform.position, leftHand.transform.rotation);
+        droppedMag.AddComponent<Rigidbody>();
+        droppedMag.AddComponent<BoxCollider>();
+        Destroy(droppedMag, 1.0f);
     }
 
     private void RefillMagazine()
     {
-        throw new NotImplementedException();
+        activeMag.SetActive(true);
     }
 }
