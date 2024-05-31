@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -340790334, guid: 67cc4cb7839cd3741b63733d5adf0442, type: 3}
+  m_Name: SubMenu_G2Frame_Pose_List
+  m_EditorClassIdentifier: 
+  controls:
+  - name: A
+    icon: {fileID: 2800000, guid: cf4774374fa8929448375b30292c97a1, type: 3}
+    type: 103
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 11400000, guid: 772ae2d6e57814a419616006b9161b16, type: 2}
+    subParameters: []
+    labels: []
+  - name: B
+    icon: {fileID: 2800000, guid: c105c2fa14a8b244d85e0dfc5cc4c4ce, type: 3}
+    type: 103
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 11400000, guid: a49140cf74ef1cf4d8c27120d29be81f, type: 2}
+    subParameters: []
+    labels: []
+  - name: C
+    icon: {fileID: 2800000, guid: 5fb9cd4ee5a2e684cb268dd9fe616ca5, type: 3}
+    type: 103
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 11400000, guid: 2335fcbec853ca146807ec126734da93, type: 2}
+    subParameters: []
+    labels: []
+  - name: D
+    icon: {fileID: 2800000, guid: 52a169f5ed5921a479944baaeea61f97, type: 3}
+    type: 103
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 11400000, guid: 693dcbd8ed27e1a4996aa1dd1c6e58ed, type: 2}
+    subParameters: []
+    labels: []
+  - name: E
+    icon: {fileID: 2800000, guid: 7e0e5151c56c7034193ab0b212c20b66, type: 3}
+    type: 103
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 11400000, guid: 1f6ec5ee3c4fa8b49b440bf4b8405ff5, type: 2}
+    subParameters: []
+    labels: []
+  - name: F
+    icon: {fileID: 2800000, guid: 8115b0f71529fde4db0a541ee7224b34, type: 3}
+    type: 103
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 11400000, guid: d7349d1f1fa9e07469c7e698c3d9704b, type: 2}
+    subParameters: []
+    labels: []
+  - name: G
+    icon: {fileID: 2800000, guid: b968e8d04f2844a499af6afc35ad2618, type: 3}
+    type: 103
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 11400000, guid: 8aa7075f645ce5a49b14aab8294f4558, type: 2}
+    subParameters: []
+    labels: []
+  - name: H
+    icon: {fileID: 2800000, guid: d5e019ee1a732bf478b5b45f01591718, type: 3}
+    type: 103
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 11400000, guid: 58d9f4bd4fa78af48ad4d8d57394f009, type: 2}
+    subParameters: []
+    labels: []

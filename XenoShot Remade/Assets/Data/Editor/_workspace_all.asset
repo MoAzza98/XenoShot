@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ac7759b196820f45aa3042cba9c1d52, type: 3}
+  m_Name: _workspace_all
+  m_EditorClassIdentifier: 
+  displayName: -----
+  tabs:
+  - tabName: --ALL--
+    scriptableObject: {fileID: 11400000}
+  - tabName: Ai Workspace
+    scriptableObject: {fileID: 11400000, guid: f77015affd7917843853eeba96d3a68c, type: 2}
+  - tabName: Graphics Workspace
+    scriptableObject: {fileID: 11400000, guid: 381d890c184fb7c4c8e8584c91aaffd9, type: 2}
+  - tabName: Editor Workspace
+    scriptableObject: {fileID: 11400000, guid: c64832898fd77044ba495909e484f49b, type: 2}

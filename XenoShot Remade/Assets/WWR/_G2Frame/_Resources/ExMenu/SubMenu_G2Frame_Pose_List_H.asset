@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -340790334, guid: 67cc4cb7839cd3741b63733d5adf0442, type: 3}
+  m_Name: SubMenu_G2Frame_Pose_List_H
+  m_EditorClassIdentifier: 
+  controls:
+  - name: 01
+    icon: {fileID: 2800000, guid: 2807c23a9c58ed2448882ddcff53b827, type: 3}
+    type: 102
+    parameter:
+      name: G2/Action
+    value: 57
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: 02
+    icon: {fileID: 2800000, guid: c65635cf95a2eb646aba950b777b0d91, type: 3}
+    type: 102
+    parameter:
+      name: G2/Action
+    value: 58
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: 03
+    icon: {fileID: 2800000, guid: dbc5ffbf9fea4b54aa814a65ff0614d0, type: 3}
+    type: 102
+    parameter:
+      name: G2/Action
+    value: 59
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: 04
+    icon: {fileID: 2800000, guid: 241f522f4a35326478ad60d620b7ecbf, type: 3}
+    type: 102
+    parameter:
+      name: G2/Action
+    value: 60
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: 05
+    icon: {fileID: 2800000, guid: 6f0a5c30cf56ed042b26da0b0c24f050, type: 3}
+    type: 102
+    parameter:
+      name: G2/Action
+    value: 61
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: 06
+    icon: {fileID: 2800000, guid: 81212391785790e48a4d71b9e250613b, type: 3}
+    type: 102
+    parameter:
+      name: G2/Action
+    value: 62
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: 07
+    icon: {fileID: 2800000, guid: 211f86135125bfa4cae0c4fc870b0748, type: 3}
+    type: 102
+    parameter:
+      name: G2/Action
+    value: 63
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: 08
+    icon: {fileID: 2800000, guid: 95957dd7f78b4844ba01b3e83a01c41e, type: 3}
+    type: 102
+    parameter:
+      name: G2/Action
+    value: 64
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []

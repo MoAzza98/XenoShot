@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -340790334, guid: 67cc4cb7839cd3741b63733d5adf0442, type: 3}
+  m_Name: SubMenu_G2Frame_Locomotion_Options
+  m_EditorClassIdentifier: 
+  controls:
+  - name: Disable Jump-Motion
+    icon: {fileID: 2800000, guid: a19ba71f8dd50f44481db8d14fce77ef, type: 3}
+    type: 102
+    parameter:
+      name: G2/DisableJump
+    value: 1
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Disable Landing-Motion
+    icon: {fileID: 2800000, guid: a19ba71f8dd50f44481db8d14fce77ef, type: 3}
+    type: 102
+    parameter:
+      name: G2/DisableLanding
+    value: 1
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: '[Hover] Auto Landing'
+    icon: {fileID: 0}
+    type: 102
+    parameter:
+      name: G2/HoverAutoLanding
+    value: 1
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: '[Walk] Standing Pose (Non-FBT Only)'
+    icon: {fileID: 0}
+    type: 102
+    parameter:
+      name: G2/WalkUnique
+    value: 1
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Auto Footsteps (Non-FBT Only)
+    icon: {fileID: 0}
+    type: 102
+    parameter:
+      name: G2/AutoFootsteps
+    value: 1
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []

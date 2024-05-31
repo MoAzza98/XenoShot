@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4898d54aef5046e4f878a3e6b67e46c5, type: 3}
+  m_Name: default_character_configuration
+  m_EditorClassIdentifier: 
+  controller: {fileID: 22100000, guid: 0b71bcca51f076441af64e94dee5e25a, type: 2}
+  animationRig: {fileID: 9165037540446524666, guid: 368a120bb5d29e94786766a4fac0c8f8,
+    type: 3}
+  cameraRig: {fileID: 6862379689840928151, guid: 4628f566046b55547829c4ad5416c5ec,
+    type: 3}

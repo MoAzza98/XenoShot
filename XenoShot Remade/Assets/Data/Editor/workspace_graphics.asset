@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ac7759b196820f45aa3042cba9c1d52, type: 3}
+  m_Name: workspace_graphics
+  m_EditorClassIdentifier: 
+  displayName: Graphics
+  tabs:
+  - tabName: Renderer
+    scriptableObject: {fileID: 11400000, guid: 4a8e21d5c33334b11b34a596161b9360, type: 2}
+  - tabName: Post processing
+    scriptableObject: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
+  - tabName: Quality Settings
+    scriptableObject: {fileID: 11400000, guid: 19ba41d7c0026c3459d37c2fe90c55a0, type: 2}

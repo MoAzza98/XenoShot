@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -340790334, guid: 67cc4cb7839cd3741b63733d5adf0442, type: 3}
+  m_Name: SubMenu_Equipment
+  m_EditorClassIdentifier: 
+  controls:
+  - name: Safety
+    icon: {fileID: 2800000, guid: 6398bdea5fbee1949b24609d35070c6e, type: 3}
+    type: 102
+    parameter:
+      name: WWR/Safety
+    value: 1
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Full Burst
+    icon: {fileID: 2800000, guid: c545bb41f081505409d699baf3d67e07, type: 3}
+    type: 103
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 11400000, guid: 01640f78326ffe546b414a6eedbc1b89, type: 2}
+    subParameters: []
+    labels: []
+  - name: Unequip
+    icon: {fileID: 2800000, guid: a19ba71f8dd50f44481db8d14fce77ef, type: 3}
+    type: 101
+    parameter:
+      name: Internal/Unequip
+    value: 1
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters: []
+    labels: []
+  - name: Options
+    icon: {fileID: 2800000, guid: 3ba957c9a9a9c094aa78375cacd00df7, type: 3}
+    type: 103
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 11400000, guid: bfeb2e75dcf56224bb790dcf30801bd4, type: 2}
+    subParameters: []
+    labels: []
